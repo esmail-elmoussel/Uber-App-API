@@ -30,6 +30,7 @@ app.get('/',(req,res) => {
 app.get('/drivers/all',(req,res) => {
     Driver.find({})
     .then(drivers => res.json(drivers))
+    .catch(err => res.send('There is no drivers availabe!'))
 })
 
 // add driver
