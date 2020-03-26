@@ -13,7 +13,7 @@ mongoose.connect(uristring, {useNewUrlParser: true, useUnifiedTopology: true,use
 mongoose.connection.once('open',() => {
     console.log('MongoDB is running ya som3a!');
 }).on('error',(error) => {
-    console.log('MongoDB is NOT running ya A7A!');
+    console.log('MongoDB is NOT running ya A7A! : ',error);
 })
 
 // Middlewares
@@ -25,7 +25,7 @@ app.use(cors());
 
 // check root
 app.get('/',(req,res) => {
-    res.send('It is working!')
+    res.send('It is Working!')
 })
 
 // show all drivers
