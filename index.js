@@ -19,9 +19,24 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+
+
 // check root
 app.get('/',(req,res) => {
     res.send('It is working!')
+})
+
+// show all drivers
+app.get('/drivers/all',(req,res) => {
+    Driver.find({})
+    .then(drivers => res.json(drivers))
+})
+
+// add driver
+app.post('/drivers',(req,res) => {
+    Driver.create(req.body)
+    .then(newDriver => res.json(newDriver))
+    .catch(err => res.json(err.message))
 })
 
 // show availabe drivers 
@@ -52,22 +67,6 @@ app.get('/drivers',(req,res) => {
     )
 })
 
-app.listen(process.env.PORT || 3000,() => {
-    console.log(`app is running on port ${process.env.PORT}`);
-});
-
-
-
-
-// Not used end points for now ..
-/*
-// add driver
-app.post('/drivers',(req,res) => {
-    Driver.create(req.body)
-    .then(newDriver => res.json(newDriver))
-    .catch(err => res.json(err.message))
-})
-
 // delete driver
 app.delete('/drivers/:id',(req,res) => {
     Driver.findByIdAndDelete({_id: req.params.id})
@@ -87,4 +86,9 @@ app.put('/drivers/:id',(req,res) => {
     .then(updatedDriver => res.json(updatedDriver))
     .catch(err => res.json(err.message))
 })
-*/
+
+
+
+app.listen(process.env.PORT || 4000,() => {
+    console.log(`app is running on port ${process.env.PORT}`);
+});
