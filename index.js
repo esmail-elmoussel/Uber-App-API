@@ -8,7 +8,7 @@ const app = express();
 
 
 // connect to MongoBD
-var uristring = process.env.MONGODB_URI || process.env.MONGOLAB_GRAY_URI || 'mongodb://localhost/uber-app';
+var uristring = process.env.MONGODB_URI || 'mongodb://localhost/uber-app';
 mongoose.connect(uristring, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true});
 mongoose.connection.once('open',() => {
     console.log('MongoDB is running ya som3a!');
@@ -32,7 +32,6 @@ app.get('/',(req,res) => {
 app.get('/drivers/all',(req,res) => {
     Driver.find({})
     .then(drivers => res.json(drivers))
-    .catch(err => res.send('There is no drivers availabe!'))
 })
 
 // add driver
