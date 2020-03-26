@@ -8,7 +8,7 @@ const app = express();
 
 
 // connect to MongoBD
-var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/uber-app';
+var uristring = process.env.MONGODB_URI || process.env.MONGOLAB_GRAY_URI || 'mongodb://localhost/uber-app';
 mongoose.connect(uristring, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true});
 mongoose.connection.once('open',() => {
     console.log('MongoDB is running ya som3a!');
