@@ -33,13 +33,3 @@ const DriverSchema = new Schema({
 const Driver = mongoose.model('driver',DriverSchema);
 
 module.exports = Driver;
-
-
-// {
-//     name: 'Esmail',
-//     rate: 5,
-//     availabe: true,
-//     geometry: {
-//         coordinates: [125.6, 10.1]
-//     }
-// }
