@@ -6,8 +6,10 @@ const Driver = require('./models/driver');
 
 const app = express();
 
+
 // connect to MongoBD
-mongoose.connect("mongodb://localhost/uber-app", {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true});
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/uber-app';
+mongoose.connect(uristring, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true});
 mongoose.connection.once('open',() => {
     console.log('MongoDB is running ya som3a!');
 }).on('error',(error) => {
